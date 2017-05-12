@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="../../js/easyui/themes/default/easyui.css" />
+<link rel="stylesheet"  href="../../js/easyui/themes/icon.css" />
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/easyui/jquery.easyui.min.js"></script>
+
+<style>
+table.data{
+	width:100%;
+	table-layout:fixed;
+	border-collapse:collapse;
+}
+#dlg table td{
+	border:1px solid #aaa;
+}
+</style>
+
+<script src="../../js/orderOper.js?v=1"> </script>
+</head>
+<body>
+ 
+	<article>
+		<h1>体检预约：</h1>
+		<table class="data"  >
+			 <thead>
+			 	<tr>
+			 		<th data-options="field:'orderId',title:'预约单号',width:fixWidth(0.1),halign:'center'">预约单号</th>
+			 		<th data-options="field:'payType',title:'支付方式',width:fixWidth(0.1),formatter:typeFormatter,halign:'center'">支付方式</th>
+			 		<th data-options="field:'name',title:'姓名',width:fixWidth(0.1),halign:'center'">姓名</th>
+			 		<th data-options="field:'phone',title:'电话',width:fixWidth(0.1),halign:'center'">电话</th>
+			 		<th data-options="field:'reserveData',title:'预约时间',width:fixWidth(0.1),halign:'center'">预约时间</th>
+			 		<th data-options="field:'bundle',title:'预约套餐',width:fixWidth(0.1),halign:'center'">预约套餐</th>
+			 		<th data-options="field:'disCountPrice',title:'套餐价格',width:fixWidth(0.1),halign:'center'">套餐价格</th>
+			 		<th data-options="field:'status',title:'预约状态',width:fixWidth(0.1),halign:'center',formatter:statusFormatter">预约状态</th>
+			 		<th data-options="field:'x',title:'操作',width:fixWidth(0.15),formatter:editFormatter,halign:'center'">操作</th>  
+			 	</tr>
+			 </thead>
+		</table>
+		<div id="toolbar">
+			<table border='0' style='width:100%;table-layout:fixed' cellpadding="5">
+				<tr>
+					<td width="20%">
+						<input class="easyui-datebox"    id='orderDate' style='width:100%' data-options="label:'预约时间:',labelWidth:60,formatter:myformatter"/></td>
+					<td width="20%">
+						<select id="orderBundle" class='easyui-combobox'  label='套餐' labelWidth="40"   style="width:100%">
+		       	     		<option >全部套餐</option>
+		       	     		<option >套餐一：基础套餐</option>
+		       	     		<option >套餐二：基础套餐</option>
+		       	     		<option >套餐三：基础套餐</option>
+		       	     		<option >套餐四：基础套餐</option>
+		       	     		<option >套餐五：基础套餐</option>
+		       	     		<option >套餐六：基础套餐</option>
+		       	     		<option >套餐七：基础套餐</option>
+		       	     		<option >套餐八：基础套餐</option>
+		       	     		<option >套餐九：心脑血管疾病风险筛查一</option>
+		       	     		<option >套餐十一：眩晕体检套餐一</option>
+		       	     		<option >套餐十二：眩晕体检套餐二</option>
+		       	     		<option >套餐十三：老年人体检套餐一</option>
+		       	     		<option >套餐十五：女性体检套餐一</option>
+		       	     		<option >套餐十六：女性体检套餐二</option>
+		       	     		<option >套餐十七：恶性肿瘤风险筛查女一</option>
+		       	     		<option >套餐十八：恶性肿瘤风险筛查女二</option>
+		       	     		<option >套餐二十：恶性肿瘤风险筛查男二</option>
+		       	     	</select>
+					</td>
+					<td width="15%">
+						<input id='orderName' class="easyui-textbox" width="100%" label="姓名:" labelWidth="40"/>
+					</td>
+					<td width="15%">
+						<input id='orderPhone' class="easyui-textbox" width="100%" label="电话:" labelWidth="40"/>
+					</td>
+					<td width="20%">
+						<select id="orderStatus" class='easyui-combobox' data-options="panelHeight:130,width:'100%',label:'状态 ',labelWidth:40">
+							<option value='全部'>全部</option>
+							<option value='核销'>核销</option>
+							<option value='支付成功'>支付成功</option>
+							<option value='支付失败'>支付失败</option>
+							
+							<option value='正在发起支付'>正在发起支付</option>
+							<option value='已选择套餐'>已选择套餐</option>
+						</select>
+					</td>
+					<td width="10%">
+						<a href="#" onclick='filter()' class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	<div id="dlg" class="easyui-dialog" title='预约详情' style="display:none;width:500px;height:300px;padding:10px"  
+			data-options="
+				iconCls: 'icon-edit', 
+				maximizable:false,closed:true,modal:true,
+				buttons: [{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:changeOrdr
+				},{
+					text:'Cancel',
+					handler:function(){
+						 $('#dlg').dialog('close')
+					}
+				}]
+			">
+		<table   cellspacing='0' cellpadding='5' style='width:100%;table-layout:fixed;border-collapse:collapse'>
+			 
+			<tr >
+				<td width="30%">预约单号</td>
+				<td width="70%"><span id="odrId"></span></td>
+			</tr>
+			<tr>
+				<td>支付方式</td>
+				<td><span id="odrpay"></span></td>
+			</tr>
+			<tr>
+				<td>姓名</td>
+				<td><span id="odrname"></span></td>
+			</tr>
+			<tr>
+				<td>电话</td>
+				<td><span id="odrphone"></span></td>
+			</tr>
+			<tr>
+				<td>预约时间</td>
+				<td><span id="odrdate"></span></td>
+			</tr>
+			<tr>
+				<td>预约套餐</td>
+				<td><span id="odrbundle"></span></td>
+			</tr>
+			<tr>
+				<td>套餐价格</td>
+				<td><span id="odrprice"></span></td>
+			</tr>
+			<tr>
+				<td>预约状态</td>
+				<td><select id="odrstatus" class='easyui-combobox' data-options="panelHeight:110,width:300,onChange:changeValue">
+						<option value='已选择套餐'>已选择套餐</option>
+						<option value='已发起支付'>已发起支付</option>
+						<option value='支付成功'>支付成功</option>
+						<option value='支付失败'>支付失败</option>
+						<option value='核销'>核销</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</article>
+</body>
+</html>

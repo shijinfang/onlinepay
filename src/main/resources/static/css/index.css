@@ -1,0 +1,98 @@
+@charset "utf-8";
+/**global**/
+body,div,p,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,th,td{margin: 0;padding: 0;}
+body{color: #333; font-family:"Microsoft YaHei";}
+table{border-collapse: collapse; border-spacing: 0;}
+fieldset,img{border: none; vertical-align:middle;}
+ol,ul{list-style: none;}
+h1,h2,h3,h4,h5,h6{font-size: 100%;font-weight: normal;}
+em{font-style: normal;}
+input,button,select,textarea{outline: none;}
+.none{display: none;}
+textarea{resize: none;}
+p{text-align: justify;text-justify: distribute;}
+a{text-decoration: none;}
+i{font-style: normal;}
+.clr{*zoom: 1;}
+.clr:after{clear: both; display: table; content: "";}
+
+/**home**/
+#tips{width:100%;height:40px; background:#000;}
+#tips .tips_centent{width:1000px;height:40px; margin:0 auto;}
+#tips .tips_centent .tipsL{float:left;height:40px;line-height:40px;font-size:12px;color:#666;width:50%;}
+#tips .tips_centent .tipsR{float:right;width:49%;height:40px;}
+#tips .tips_centent .tipsR li{float:right;margin-left:10px;display:inline-block;height:40px;line-height:40px; font-size:12px;color:#999;}
+#tips .tips_centent .tipsR li a{color:#999;}
+#tips .tips_centent .tipsR li a:hover{color:#be8753;}
+#header{width:1000px;height:110px;margin:0 auto;}
+#header .logo{float:left;width:531px;height:110px; background:url(../images/logo.png) 0 center no-repeat;}
+#header .ma{position:relative;float:right;width:126px;height:110px;background:url(../images/ma.png) right center no-repeat;}
+#header .ma .ma_conetnt{position:absolute;left:0;top:12px;width:90px;height:90px;background:url(../images/ma_centent1.jpg) no-repeat;display:none;}
+#header .ma:hover .ma_conetnt{display:block;}
+#containers{width:1000px;margin:0 auto;}
+#containers .logo_banner{position:relative;width:100%;height:302px;background:url(../images/login.jpg) no-repeat;margin-top:30px;}
+#containers .logo_banner input{border:none;background:none;position:absolute;left:165px;outline:none;font-size:16px;color:#009999;}
+#containers .logo_banner .tel{top:105px;height:34px;line-height:34px;width:185px;}
+#containers .logo_banner .password{top:155px;height:34px;line-height:34px;width:185px;}
+#containers .logo_banner .img{position:absolute;left:365px;top:155px;height:25px;line-height:34px;width:65px;}
+#containers .logo_banner .submit{top:202px;left:100px;height:40px;width:260px;background:url(../images/login_btn.png) no-repeat; cursor:pointer;color:#cc9966; font-weight:bold;}
+#containers .logo_banner .submit:hover{color:#be8449;}
+#footer{width:1000px;margin:0 auto;margin-top:90px;}
+#footer p{text-align:center;color:#999;font-size:12px;line-height:2em;}
+#containers .patient_banner{position:relative;width:100%;height:302px;background:url(../images/name_list.jpg) no-repeat;}
+#containers .patient_banner table{position: absolute;left:110px;top:85px;width:300px;border:0px; table-layout:fixed;}
+#containers .patient_banner table tr td{height:28px;border-bottom:1px dashed #839292; font-size:14px;color:#000;text-indent:10px;}
+#containers .patient_banner table .tr_end td{border-bottom:none;}
+#footer_content{background:#333;padding:18px 0;}
+#footer_content p{text-align:center;color:#999;font-size:12px;line-height:2em;}
+
+/**patient web**/
+.patient_list_title{width:1000px;margin:0 auto;height:40px;line-height:40px; text-indent:20px;color:#fff;font-size:18px; background:#cc9966;margin:20px 0 0 0;}
+.main-title{width:1000px;margin:0 auto; background:#f5f5f5;padding:20px 0 30px 0;}
+.tabs{float:left;margin:0;padding:0;width:200px;margin-left:20px;border-bottom:1px solid #e8e8e8;}
+.tabs li{margin:0;padding:0;width:198px;height:40px;float:left;text-align:center;line-height:40px;display:block;border:1px solid #e8e8e8;background:#fff;border-bottom:none;font-size:14px;color:#333;}
+.tabs li.cur,.tabs li.cur:hover{width:200px;background:url(../images/tab_btn.png) no-repeat;border:1px solid #f5f5f5;color:#fff;padding-right:20px;}
+.tabs li:hover{color:#cc9966;cursor:pointer;}
+.tab_content{float:right;margin-right:20px;width:670px;padding:15px 20px;border:1px solid #e8e8e8;display:none;margin-bottom:10px;background:#fff;}
+.tab_content .tab_content_title{height:18px;border-left:5px solid #2fc3c2;color:#333;font-size:16px; line-height:18px;padding-left:5px;}
+.tab_content table{ table-layout:fixed;width:100%;margin-top:20px;}
+.tab_content .tab_content_title span{float:right;display:inline-block;color:#666;font-size:14px; line-height:18px;}
+.tab_content table tr td{color:#333;font-size:14px; text-align:center; line-height:40px;border-bottom:1px solid #eee;}
+.tab_content table tr .td_warn1 a{color:#eac100;font-size:14px; text-align:center; line-height:40px;border-bottom:1px solid #eee;}
+.tab_content table tr .td_warn2 a{color:#f00;font-size:14px; text-align:center; line-height:40px;border-bottom:1px solid #eee;} 
+.tab_content table .tr_title td{border-bottom:1px solid #2fc3c2;} 
+.tab_content table .tr_red td{color:#f00;}
+.tab_content table .end_tr td{border-bottom:none;}
+.on{display:block;}
+.patient_list_end{background:#2fc3c2;}
+.patient_list_end span{float:right;display:inline-block;color:#fff;font-size:14px; line-height:40px;padding-right:20px;}
+.tab_content_end{width:1000px;margin:0 auto; background:#f5f5f5;margin-bottom:40px;}
+.tab_content_end .tab_content_p{padding:25px 40px;}
+.tab_content_end .tab_content_p p{line-height:30px;color:#333;font-size:14px;}
+.patient_list_expert{margin-top:0px;background:#3c3c3c;}
+.tabs_expert_content .tab_expert_content{display:none;}
+.tabs_expert_content .on{display:block;}
+
+/**expert web**/
+.expert_list{padding:10px 0 30px 0;}
+.expert_listL{float:left;width:380px;}
+.expert_listL .expert_ul li{float:left;margin:10px;height:30px;line-height:30px;padding:0 15px;font-size:18px;color:#000;border-bottom:3px solid #f5f5f5; cursor:pointer;}
+.expert_listL .expert_ul li.cur{height:30px;line-height:30px;padding:0 15px;border-bottom:3px solid #2fc3c2;}
+.tabs_expert_content{margin-left:10px;width:340px; background:#fff;padding:10px;padding-top:0px;}
+.expert_listL .table_title{width:360px;background:#fff;margin-left:10px;border:1px solid #e8e8e8;border-bottom:1px solid #fff;}
+.expert_listL .table_title table{margin-left:10px;width:340px;height:40px;line-height:40px;table-layout:fixed;border:0px;}
+.expert_listL .table_title table tr td{border-bottom:1px solid #2fc3c2;}
+.expert_listR{float:right;margin-right:10px;width:600px;margin-top:20px;}
+.expert_listR .tab_content_title{height:18px;border-left:5px solid #2fc3c2;color:#000;font-size:18px; line-height:18px;padding-left:5px;}
+.expert_listR .conclusion{padding:10px 16px;background:#fff;border:1px solid #e8e8e8;margin-top:15px;min-height:266px;}
+.expert_listR .conclusion p{line-height:2em;color:#333;font-size:14px;}
+.remark_content{margin-top:10px;width:100%;}
+.remark_content .remark_export_btn{float:left;width:140px;height:40px;line-height:40px;text-align:center;background:#62b6eb;font-size:14px;color:#fff;border:none;cursor:pointer;}
+.remark_content .remark_export_btn:hover{background:#47a0d8;}
+.remark_content .remark_btn:hover{background:#1db1b0;}
+.remark_content .remark_btn{float:right;width:90px;height:40px;line-height:40px;text-align:center;background:#2fc3c2;font-size:14px;color:#fff;border:none;cursor:pointer;}
+.tabs_expert_content{width:340px;height:276px;border:1px solid #e8e8e8;border-top:1px solid #fff;overflow:hidden; overflow-y:auto;}
+.tabs_expert_content table{width:100%;table-layout:fixed;border:0px;}
+.tabs_expert_content table tr td{height:40px;line-height:40px;border-bottom:1px solid #eee;font-size:14px;color:#000; text-align:center;}
+.tabs_expert_content table tr:hover td{background:#2fc3c2;color:#fff;}
+.expert_listL .table_title table tr td{font-size:14px;color:#000; text-align:center;height:48px;}

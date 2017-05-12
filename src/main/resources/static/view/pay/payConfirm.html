@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no" />
+<title>南京鼓楼医院集团安庆市石化医院</title>
+<style>
+.charge {
+    font-family: Helvetica;
+    padding-bottom: 10px;
+    -webkit-user-select: none;
+}
+.charge h1 {
+    height: 44px;
+    line-height: 44px;
+    color: #FFFFFF;
+    background: #3D87C3;
+    text-align: center;
+    font-size: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.charge .content {
+    padding: 10px 12px;
+}
+.charge h2 {
+    font-size: 14px;
+    color: #777777;
+    margin: 5px 0;
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+.charge .select li {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-right: 2%;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    border: 1px solid #BBBBBB;
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.cf:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.charge .copy-right {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #848484;
+    text-align: center;
+}
+.charge .price {
+    border-bottom: 1px dashed #C9C9C9;
+    padding: 10px 10px 15px;
+    margin-bottom: 20px;
+    color: #666666;
+    font-size: 12px;
+}
+.charge .price strong {
+    font-weight: normal;
+    color: #EE6209;
+    font-size: 26px;
+    font-family: Helvetica;
+}
+a[class*="btn"] {
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 5px;
+}
+.btn-green {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #43C750), color-stop(1, #31AB40));
+    border: 1px solid #2E993C;
+    box-shadow: 0 1px 0 0 #69D273 inset;
+}
+body {
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    font-family: Helvetica;
+    background: #ECECEC;
+}
+</style>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/payConfirm.js?v=5"> </script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"> </script>
+<script>
+	
+</script>
+<style>
+	#queryPayResult,#failPayResult{
+		display:none;
+	}
+	#queryPayResult{
+		padding:2vw 3vw;
+	}
+	#failPayResult{ 
+		font-size:2em;
+		
+	}
+	#bdetail{
+		padding-left:5vw;
+		padding-top:2vw;
+	}
+	.ok{
+		wdith:40vw;
+		height:40vw;
+		background-image:url(../../images/ok.png);
+		background-size:40vw 40vw;
+		background-repeat:no-repeat;
+		background-position:center;
+	}
+	.backmore{
+		background-color:#44b549;
+		color:white;
+		display:inline-block; 
+		height:40px; 
+		line-height:38px;
+		font-weight:bold;
+		display:inline-block;
+		text-align:center;
+		width:100%;
+	}
+	.backmore a{
+		text-decoration:none;
+		color:white;
+	}
+</style>
+</head>
+<body>
+	<article class="charge" id="orderPreview">
+		<h1>安庆石化医院体检预约收费</h1>
+		<section class="content">
+				<h2>商品：<span id="goods"></span>。</h2>		
+		  <ul class="select cf">
+					<li><img id="icon"   style="width:150px;height:150px"/></li>
+				</ul>
+				<p class="copy-right">该商品退款请到医院窗口办理</p>
+				<div class="price">微信价：<strong>￥<span id="price"></span>元</strong></div>
+				<div class="operation">
+				<a class="btn-green" id="getBrandWCPayRequest" style="text-decoration:none" >立即购买
+				</a></div>
+				 
+		</section>
+	</article>
+	<article id="queryPayResult">
+		<div style="text-align:center;font-size:1.5em;padding-top:5vw">
+			<span style="color:green" id="inquerying">正在查询支付结果,请稍候...</span>
+		</div>
+		<article id="bdetail">
+				<div class="ok"></div> 
+				<table class="orderTable" >
+					<thead><tr><th colspan="2"><span class="okimg"></span><span class="oktxt">恭喜您，支付成功</span></th></tr></thead>
+					<tbody>
+						<tr><td class="right">支付方式:</td><td class="left"><span class="tpaytype"></span></td></tr>
+						<tr><td class="right">订单号:</td><td class="left"><span class="tOrderId"></span></td></tr>
+						<tr><td class="right">姓名:</td><td class="left"><span class="tOrderName"></span></td></tr>
+						<tr><td class="right">电话:</td><td class="left"><span class="tOrderPhone"></span></td></tr>
+						<tr><td class="right">体检套餐:</td><td class="left"><span class="tOrderBundle"></span></td></tr>
+						<tr><td class="right">体检日期:</td><td class="left"><span class="tOrderDate"></span></td></tr>
+						<tr><td class="right">支付金额:</td><td class="left"><span class="tOrderPrice"></span></td></tr>
+					</tbody>
+					<tfoot>
+						<tr style="display:none"><td colspan="2"><span class="alarm"></span></td></tr>
+						<tr><td colspan="2"><div class="backmore"><a href="/pages/reserve">再次预约</a></div></td></tr>
+					</tfoot>
+				</table>
+				 
+	 </article>
+	</article>
+	<article id="failPayResult">
+	<div style="text-align:center;margin-top:10vw;">
+		<div> 
+		<div class="failed"> <span style="margin-left:21vw;line-height:20vw;color:red;height:20vw;margin-left:20vwdisplay:inline-block">支付失败!</span></div>
+ 
+		</div>
+		<div style="color:#888;font-size:0.6em">
+		<div>您的以下体检套餐没能支付成功</div>
+		<div><span class="tOrderBundle"></span></div>
+		<div><span class="tOrderDate"></span></div>
+		</div>
+	</div>
+		<div>
+			
+		</div>
+	</article>
+	<style>
+		.failed{background-image:url(../../images/timg.jpg);background-size:20vw 20vw;display:inline-block;height:20vw;background-repeat:no-repeat}
+		.orderTable{width:100%;color:gray}
+		.orderTable td{padding:4px 5px;}
+		td.right{text-align-last:justify;width:30%;padding-left:2vw}
+		td.left{text-align:left}
+		.oktxt{font-size:2.3em;color:#FFA78F}
+	</style>
+	 
+	
+</body>
+</html>

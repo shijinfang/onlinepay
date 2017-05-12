@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no" />
+<title>南京鼓楼医院集团安庆市石化医院</title>
+<style>
+.charge {
+    font-family: Helvetica;
+    padding-bottom: 10px;
+    -webkit-user-select: none;
+}
+.charge h1 {
+    height: 44px;
+    line-height: 44px;
+    color: #FFFFFF;
+    background: #3D87C3;
+    text-align: center;
+    font-size: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.charge .content {
+    padding: 10px 12px;
+}
+.charge h2 {
+    font-size: 14px;
+    color: #777777;
+    margin: 5px 0;
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+.charge .select li {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-right: 2%;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    border: 1px solid #BBBBBB;
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.cf:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.charge .copy-right {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #848484;
+    text-align: center;
+}
+.charge .price {
+    border-bottom: 1px dashed #C9C9C9;
+    padding: 10px 10px 15px;
+    margin-bottom: 20px;
+    color: #666666;
+    font-size: 12px;
+}
+.charge .price strong {
+    font-weight: normal;
+    color: #EE6209;
+    font-size: 26px;
+    font-family: Helvetica;
+}
+a[class*="btn"] {
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 5px;
+}
+.btn-green {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #43C750), color-stop(1, #31AB40));
+    border: 1px solid #2E993C;
+    box-shadow: 0 1px 0 0 #69D273 inset;
+}
+body {
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    font-family: Helvetica;
+    background: #ECECEC;
+}
+</style>
+<script src="../../js/jquery.min.js"></script> 
+<script>
+	$(function(){
+		$("#bdetail").hide();
+		$("#failPayResult").hide();
+		var reg=new RegExp("pay_no=([^=#&]+)")
+		id=reg.exec(document.location.href);
+		var interval=setInterval(function(){
+		$.getJSON("/pages/viewOrder.do?pay_no="+id[1],function(data){
+			 
+			if(data&&data.notifyed>0){
+				clearInterval(interval);
+				$("#inquerying").hide();
+				$(".tpaytype").text(data.payType==1?"支付宝":"微信");
+				$(".tOrderId").text(data.orderId)
+				$(" .tOrderName").text(data.name)
+				$(" .tOrderPhone").text(data.phone)
+				$(" .tOrderBundle").text(data.bundle)
+				$(" .tOrderDate").text(data.reserveData)
+				$(" .tOrderPrice").text(data.disCountPrice+'元')
+				if(data.status=="支付成功"){
+					$("#bdetail").show();
+					
+				}else{
+					$("#failPayResult").show(); 
+				}
+			} 
+			
+		})
+		},2000);
+	})
+</script>
+<script>
+	
+</script>
+<style>
+	#queryPayResult,#failPayResult{
+		display:none;
+	}
+	#queryPayResult{
+	display:block;
+		padding:2vw 3vw;
+	}
+	#failPayResult{ 
+	  padding-left: 5vw;
+      padding-top: 2vw;
+	}
+	#bdetail{
+		padding-left:5vw;
+		padding-top:2vw;
+	}
+	.fail,.ok{
+		wdith:40vw;
+		height:40vw;
+		
+		background-size:40vw 40vw;
+		background-repeat:no-repeat;
+		background-position:center;
+	}
+	.ok{background-image:url(../../images/ok.png);}
+	.fail{background-image:url(../../images/fail.png);}
+	.backmore{
+		background-color:#44b549;
+		color:white;
+		display:inline-block; 
+		height:40px; 
+		line-height:38px;
+		font-weight:bold;
+		display:inline-block;
+		text-align:center;
+		width:100%;
+	}
+	.backmore a{
+		text-decoration:none;
+		color:white;
+	}
+</style>
+</head>
+<body>
+	 
+	<article id="queryPayResult">
+		<div style="text-align:center;font-size:1.5em;padding-top:5vw">
+			<span style="color:green;" id="inquerying">正在查询支付结果,请稍候...</span>
+		</div>
+		<article id="bdetail">
+				<div class="ok"></div>
+				<table class="orderTable"   >
+					<thead>
+							<tr>
+								<th colspan="2">
+									<span class="okimg"></span>
+									<span class="oktxt">恭喜您，支付成功</span>
+								</th>
+							</tr>
+					</thead>
+					<tbody>
+						
+						<tr>
+							<td class="right" width="30%">支付方式:</td>
+							<td class="left" width="70%"><span class="tpaytype" th:text='${order.payType eq 1 ? "支付宝" : "微信"}'></span></td>
+						</tr>
+						<tr>
+							<td class="right">订单号:</td>
+							<td class="left"><span class="tOrderId" th:text="${order.orderId}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">姓名:</td>
+							<td class="left"><span class="tOrderName" th:text="${order.name}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">电话:</td>
+							<td class="left"><span class="tOrderPhone" th:text="${order.phone}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">体检套餐:</td>
+							<td class="left"><span class="tOrderBundle" th:text="${order.bundle}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">体检日期:</td>
+							<td class="left"><span class="tOrderDate" th:text="${order.reserveData}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">支付金额:</td>
+							<td class="left"><span class="tOrderPrice" th:text="${order.disCountPrice+'元'}"></span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr style="display:none"><td colspan="2"><span class="alarm" >请您于<span th:text="${order.reserveData}"></span></span>当天到院进行体检.</td></tr>
+						<tr><td colspan="2"><div class="backmore"><a href="/view/pay/reserve.html">再次预约</a></div></td></tr>
+					</tfoot>
+				</table>
+				 
+	 </article>
+	</article>
+	<article id="failPayResult"> 
+		 <div class="fail"></div>
+		<table class="orderTable" >
+		<thead>
+							<tr>
+								<th colspan="2">
+									<span class="failimg"></span>
+									<span class="oktxt">对不起，支付失败</span>
+								</th>
+							</tr>
+					</thead>
+			<tbody>
+						
+						<tr>
+							<td class="right" width="30%">支付方式:</td>
+							<td class="left" width="70%"><span class="tpaytype" th:text='${order.payType eq 1 ? "支付宝" : "微信"}'></span></td>
+						</tr>
+						<tr>
+							<td class="right">订单号:</td>
+							<td class="left"><span class="tOrderId" th:text="${order.orderId}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">姓名:</td>
+							<td class="left"><span class="tOrderName" th:text="${order.name}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">电话:</td>
+							<td class="left"><span class="tOrderPhone" th:text="${order.phone}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">体检套餐:</td>
+							<td class="left"><span class="tOrderBundle" th:text="${order.bundle}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">体检日期:</td>
+							<td class="left"><span class="tOrderDate" th:text="${order.reserveData}"></span></td>
+						</tr>
+						<tr>
+							<td class="right">支付金额:</td>
+							<td class="left"><span class="tOrderPrice" th:text="${order.disCountPrice+'元'}"></span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr style="display:none"><td colspan="2"><span class="alarm" >请您于<span th:text="${order.reserveData}"></span></span>当天到院进行体检.</td></tr>
+						<tr><td colspan="2"><div class="backmore"><a href="/view/pay/reserve.html">重新预约</a></div></td></tr>
+					</tfoot>
+		</table>  
+		<div>
+			
+		</div>
+	</article>
+	<style>
+		.failed{background-image:url(../../images/fail.png);background-size:20vw 20vw;display:inline-block;height:20vw;background-repeat:no-repeat}
+		.orderTable{width:100%;color:gray}
+		.orderTable td{padding:4px 5px;}
+		td.right{text-align:left;padding-left:2vw;text-align-last:justify;width:30%}
+		td.left{text-align:left}
+		.oktxt{font-size:2.3em;color:#FFA78F}
+	</style>
+	 
+	
+</body>
+</html>

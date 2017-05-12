@@ -1,0 +1,18 @@
+<project name="Caonima" basedir="." default="compile">
+	<target name="compile">
+		<javac srcdir="src" includeantruntime="false" destdir="build\classes" debug="true" encoding="UTF-8">
+			<classpath>
+				<fileset dir="lib" includes="*.jar"/>
+			</classpath>
+		</javac>
+	
+	</target>
+	<target name="jar" depends="compile">
+		<jar jarfile="Caonima.jar" >
+			<fileset dir="build\classes" includes="**/*">
+				
+			</fileset>
+		</jar>
+	</target>
+
+</project>
